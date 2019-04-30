@@ -1,3 +1,4 @@
+
 /*
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,25 +18,43 @@
  */
 namespace org.example.basic
 
-asset SampleAsset identified by assetId {
-  o String assetId
-  --> SampleParticipant owner
-  o String value
+asset EPINVerification identified by epin {
+  o Double amount optional
+  o String create_date_time optional
+  o String created_by optional
+  o String epin 
+  o String plan_id optional
+  o String plan_name optional
+  o String referred optional
+  o String referred_email optional
+  o String referred_mobile optional
+  o String referred_name optional
+  o String user_id optional
+  o String user_mobile optional
+  o String user_name optional
 }
 
-participant SampleParticipant identified by participantId {
-  o String participantId
-  o String firstName
-  o String lastName
+participant WalletInfo identified by hash {
+  o Double amount optional
+  o String comment optional
+  o String hash
+  o String receiver optional
+  o String receiver_address optional
+  o String receiver_name optional
+  o String sender optional
+  o String sender_address optional
+  o String sender_name optional
+  o String create_date_time optional
 }
 
 transaction SampleTransaction {
-  --> SampleAsset asset
+  --> EPINVerification epin
   o String newValue
 }
 
 event SampleEvent {
-  --> SampleAsset asset
+  --> EPINVerification epin
   o String oldValue
   o String newValue
 }
+
